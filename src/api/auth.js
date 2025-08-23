@@ -1,4 +1,5 @@
 import api from "./axios";
+import {userAuth, passAuth} from "../secrets/secrets"
 
 export const validToken = async () =>{
 
@@ -24,7 +25,7 @@ export const validToken = async () =>{
 }
 
 export const loginEmployee = async (mail, pass) => {
-    const credentials = btoa(`micecrew1:0147568293123`);
+    const credentials = btoa(`${userAuth}:${passAuth}`);
 
     console.log(`${mail} ${pass}`)
 
