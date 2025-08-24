@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { loginEmployee, validToken } from '../../api/auth'
+import { loginEmployee } from '../../api/auth'
 import { useNavigate } from "react-router-dom";
 
 function LoginBarber() {
@@ -12,13 +12,10 @@ function LoginBarber() {
     async function handleSubmit(event){
         event.preventDefault()
         const data = await loginEmployee(login, pass)
-        const verifyToken = await validToken()
         setMessageApi(data.message)
-
+        
         if(data.status == 1){
-            if(verifyToken.status == 1){
-                navigate("/dashboard")
-            }
+            navigate("/dashboard")
         }
     }
 
