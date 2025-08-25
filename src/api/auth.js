@@ -11,7 +11,6 @@ export const validToken = async () =>{
             headers: {
                 Authorization: `Bearer ${token}`,
             }, 
-            withCredentials: true 
         })
         console.log('valid')
         
