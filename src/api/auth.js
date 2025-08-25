@@ -1,8 +1,21 @@
 import api from "./axios"
 import {userAuth, passAuth} from "../secrets/secrets"
 
-export const validToken = async () =>{
 
+export const logoutEmployee = async () =>{
+    try {
+        const response = await api.get("/logout",{withCredentials: true})
+
+        console.log(response.data)
+        localStorage.removeItem("token")
+        window.location.href = "/"
+        return response.data
+    } catch (erro){
+        console.error("Erro no logout.:", erro.response?.data || erro.message)
+    }
+}
+
+export const validToken = async () =>{
     const token = localStorage.getItem("token")
 
     console.log(token)
