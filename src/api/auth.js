@@ -1,4 +1,5 @@
 import api from "./axios"
+import { jwtDecode } from "jwt-decode"
 import {userAuth, passAuth} from "../secrets/secrets"
 
 
@@ -26,6 +27,8 @@ export const validToken = async () =>{
             }, 
         })
         console.log('valid')
+        const decode = jwtDecode(token)
+        //console.log(decode)
         
         return response.data
     } catch (erro) {
@@ -40,6 +43,9 @@ export const validToken = async () =>{
             console.log('gerado novo token access')
             console.log(response.data)
             localStorage.setItem("token", response.data.accessToken)
+
+            const decode = jwtDecode(token)
+            console.log(decode)
 
 
             return response.data
